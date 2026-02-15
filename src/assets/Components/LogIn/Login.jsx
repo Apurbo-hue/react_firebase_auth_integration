@@ -1,26 +1,38 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
+// import { signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
-import { auth } from '../../../../firebase.config';
+import { AuthContext } from '../Contexts/AuthContext/AuthContext';
+// import { auth } from '../../../../firebase.config';
 
 const Login = () => {
 
+    const {signInUser} = useContext(AuthContext);
 
-    const handleLogin = (event) => {
+    const handleLogin= (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-        console.log(email, password)
-        signInWithEmailAndPassword(auth, email, password)
-            .then((result) =>
-            {
-                console.log(result)
-              }
-        )
-            .catch((error) => {
-            console.log(error)
-        })
+        signInUser(email, password)
+            .then(result => { console.log(result) })
+            .catch(error => { console.log(error) })
     }
+
+
+    // const handleLogin = (event) => {
+    //     event.preventDefault();
+    //     const email = event.target.email.value;
+    //     const password = event.target.password.value;
+    //     console.log(email, password)
+    //     signInWithEmailAndPassword(auth, email, password)
+    //         .then((result) =>
+    //         {
+    //             console.log(result)
+    //           }
+    //     )
+    //         .catch((error) => {
+    //         console.log(error)
+    //     })
+    // }
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
