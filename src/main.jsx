@@ -8,6 +8,9 @@ import Home from './assets/Components/Home/Home.jsx'
 import Register from './assets/Components/Register/Register.jsx'
 import Login from './assets/Components/LogIn/Login.jsx'
 import AuthProvider from './assets/Components/Contexts/AuthContext/AuthProvider.jsx'
+import Orders from './assets/Components/Orders/Orders.jsx'
+import Profiles from './assets/Components/Profiles/Profiles.jsx'
+import PrivateRoute from './assets/Components/Routes/PrivateRoute.jsx'
 
 
 const router = createBrowserRouter([
@@ -17,7 +20,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "register", Component: Register },
-      { path: "login", Component: Login }
+      { path: "login", Component: Login },
+      { path: "orders", element:<PrivateRoute><Orders></Orders></PrivateRoute> },
+      { path: "profiles", element:<PrivateRoute><Profiles></Profiles></PrivateRoute> }
     ]
   }
 ])
@@ -29,7 +34,5 @@ createRoot(document.getElementById('root')).render(
       <RouterProvider router={router}> </RouterProvider>
     </AuthProvider>
 
-
-
-  </StrictMode>,
+  </StrictMode>
 )

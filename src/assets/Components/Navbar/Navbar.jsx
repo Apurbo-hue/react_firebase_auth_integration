@@ -18,8 +18,8 @@ const Navbar = () => {
         <li><NavLink to="/login">Login</NavLink></li>
 
         {user && <>
-        <li><NavLink to="/regist">Register</NavLink></li>
-        <li><NavLink to="/log">Login</NavLink></li>
+        <li><NavLink to="/orders">Orders</NavLink></li>
+        <li><NavLink to="/profiles">Profiles</NavLink></li>
         </>}
 
     </>
